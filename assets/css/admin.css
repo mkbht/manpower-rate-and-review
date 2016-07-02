@@ -1,0 +1,56 @@
+body {
+	background: #ECF0F1;
+}
+
+.logo {
+	font-size: 50px;
+	font-family: impact;
+	margin: 20px;
+	color: #fff;
+	margin: 0;
+	text-align: center;
+}
+
+body.login {
+	background: #2C3E50;
+}
+
+.login .thumbnail
+{
+	margin-top: 50px;
+	padding: 30px;
+}
+
+.login .logo {
+	font-size: 50px;
+	font-family: impact;
+	margin: 20px;
+	color: #333;
+}
+
+.leftbar {
+	background: #2C3E50;
+	height: 700px;
+}
+
+.menu {
+	margin-top: 20px;
+}
+
+.menu ul {
+	list-style: none;
+	padding: 0;
+}
+
+.menu li a {
+	color: #ddd;
+	display: block;
+	padding: 10px;
+	border-top: 1px solid #34495E;
+
+}
+
+.menu li a:hover {
+	background: #1a3E50;
+	text-decoration: none;
+}
