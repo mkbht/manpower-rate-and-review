@@ -15,7 +15,7 @@ class Admin_Model extends CI_Model {
 		if(password_verify($password, $row->pass)) {
 			$this->session->set_userdata(array(
 				'logged' => 1,
-				username => $username
+				'admin' => $username
 				));
 			return 1;
 		}
@@ -24,13 +24,13 @@ class Admin_Model extends CI_Model {
 	}
 
 	public function getUsers() {
-		$this->db->select('id, username, fname, lname, paddress');
+		$this->db->select('id, username, fname, lname, paddress, isverified');
 		$query = $this->db->get('user');
 		return $query->result_array();
 	}
 
 	public function getManpowers() {
-		$this->db->select('id, name, address, phone, description, thumb');
+		$this->db->select('id, name, address, phone, description, thumb, id as action');
 		$query = $this->db->get('manpower');
 		return $query->result_array();
 	}
@@ -49,6 +49,25 @@ class Admin_Model extends CI_Model {
 				'thumb' => $thumb
 			);
 		$this->db->insert('manpower', $data);
+	}
+
+	function removeManpower($id) {
+		$query = $this->db->get_where('manpower', array('id' => $id));
+		if($query->num_rows() == 1) {
+			$this->db->delete('manpower', array('id' => $id));
+			return 1;
+		}
+		return 0;
+	}
+
+	function verifyUser($id) {
+		$query = $this->db->get_where('user', array('id' => $id));
+		if($query->num_rows() == 1) {
+			$this->db->where('id', $id);
+			$this->db->update('user', array('isverified' => 1));
+			return 1;
+		}
+		return 0;
 	}
 
 }

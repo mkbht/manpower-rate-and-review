@@ -3,7 +3,7 @@ body {
 }
 
 .logo {
-	font-size: 50px;
+	font-size: 24px;
 	font-family: impact;
 	margin: 20px;
 	color: #fff;
@@ -12,13 +12,14 @@ body {
 }
 
 body.login {
-	background: #2C3E50;
+	background: #ECF0F1;
 }
 
 .login .thumbnail
 {
 	margin-top: 50px;
 	padding: 30px;
+	box-shadow: 1px 1px 15px #222;
 }
 
 .login .logo {
@@ -29,12 +30,12 @@ body.login {
 }
 
 .leftbar {
-	background: #2C3E50;
+	background: #34495E;
 	height: 700px;
 }
 
 .menu {
-	margin-top: 20px;
+	padding-top: 20px;
 }
 
 .menu ul {
@@ -53,4 +54,12 @@ body.login {
 .menu li a:hover {
 	background: #1a3E50;
 	text-decoration: none;
+}
+
+.well-black {
+	background: teal;
+	color: #fff;
+	padding: 25px;
+	margin: 0;
+	text-align: center;
 }

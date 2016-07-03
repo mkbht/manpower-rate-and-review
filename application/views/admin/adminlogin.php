@@ -10,8 +10,10 @@
 		<div class="col-md-6 col-md-offset-3">
 			<div class="thumbnail">
 				<div class="logo">MANPOWER REVIEW</div>
+				<h4>Admin Panel Login</h4>
+				<hr>
 				<?=validation_errors('<div class="alert alert-danger">', '</div>'); ?>
-				<?=form_open(base_url('admin/login'));?>
+				<?=form_open(base_url('admin'));?>
 					<input type="text" name="username" class="form-control" placeholder="Username">
 					<br>
 					<input type="password" name="pass" class="form-control" placeholder="Password">

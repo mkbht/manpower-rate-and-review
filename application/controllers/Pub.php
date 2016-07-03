@@ -21,7 +21,7 @@ class Pub extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->database();
-		$this->load->model("Main_model");
+		//$this->load->model("Main_model");
 	}
 
 	public function index()

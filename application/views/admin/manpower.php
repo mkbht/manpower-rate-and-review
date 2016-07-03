@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Admin Login Page</title>
-	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/bootstrap.min.css')?>">
-	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/admin.css')?>">
-</head>
-<body>
-<div class="row">
-	<div class="col-md-2">
-		<div class="leftbar">
-			<div class="logo">MRR</div>
-			<div class="menu">
-				<ul>
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Verify Users</a></li>
-					<li><a href="#">Manpower</a></li>
-					<li><a href="#">UserList</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 	<div class="col-md-10">
-		<b> Admin Panel</b>
-		Successfully Logged In <?=$username?>
+	<h3>Manpowers</h3>
+	<?=$this->session->flashdata('message') != NULL ?  '<div class="alert alert-success">'.$this->session->flashdata('message').'</div>' : '';?>
 		
 		<table class="table table-bordered table-striped">
 			<tr>
@@ -32,12 +10,18 @@
 				<th>Phone</th>
 				<th>Description</th>
 				<th>Thumbnail</th>
+				<th>Action</th>
 			</tr>
 			<?php for($i = 0; $i < count($manpower); $i++): ?>
 				<tr>
 				<?php foreach($manpower[$i] as $key => $value): ?>
-					<td><?=$value?></td>
+					<?php if($key == 'action'): ?>
+						<td><a href="<?=base_url('admin/removemanpower/'.$value);?>" class="btn btn-primary">Remove</a></td>
+					<?php else: ?>
+						<td><?=$value?></td>
+					<?php endif?>
 				<?php endforeach?>
+					
 				</tr>
 			<?php endfor?>
 		</table>
