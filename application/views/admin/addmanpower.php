@@ -8,6 +8,10 @@
 		<input class="form-control" name="name" type="text">
 		<label>Address</label>
 		<input type="text" name="address" class="form-control">
+		<label>Email</label>
+		<input type="text" name="email" class="form-control">
+		<label>Website</label>
+		<input type="text" name="website" class="form-control">
 		<label>Phone No.</label>
 		<input type="tel" name="phone" class="form-control">
 		<label>Description</label>

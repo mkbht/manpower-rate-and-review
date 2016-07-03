@@ -7,6 +7,8 @@
 				<th>SN</th>
 				<th>Name</th>
 				<th>Address</th>
+				<th>Email</th>
+				<th>Website</th>
 				<th>Phone</th>
 				<th>Description</th>
 				<th>Thumbnail</th>

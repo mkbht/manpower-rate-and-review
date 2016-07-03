@@ -30,7 +30,7 @@ class Admin_Model extends CI_Model {
 	}
 
 	public function getManpowers() {
-		$this->db->select('id, name, address, phone, description, thumb, id as action');
+		$this->db->select('id, name, address, email, website, phone, description, thumb, id as action');
 		$query = $this->db->get('manpower');
 		return $query->result_array();
 	}
@@ -39,12 +39,16 @@ class Admin_Model extends CI_Model {
 		$name = $this->input->post('name');
 		$address = $this->input->post('address');
 		$phone = $this->input->post('phone');
+		$email = $this->input->post('email');
+		$website = $this->input->post('website');
 		$description = $this->input->post('description');
 		$thumb = $this->input->post('thumb');
 		$data = array(
 				'name' => $name,
 				'address' => $address,
 				'phone' => $phone,
+				'email' => $email,
+				'website' => $website,
 				'description' => $description,
 				'thumb' => $thumb
 			);

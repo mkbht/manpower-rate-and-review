@@ -62,6 +62,8 @@ class Admin extends CI_Controller
 		$this->form->set_rules('name', 'Manpower Name', 'required|min_length[4]');
 		$this->form->set_rules('address', 'Address', 'required');
 		$this->form->set_rules('phone', 'Phone Number', 'required');
+		$this->form->set_rules('email', 'Email', 'required');
+		$this->form->set_rules('website', 'Website', 'required');
 		$this->form->set_rules('description', 'Description', 'required');
 		$this->form->set_rules('thumb', 'Thumbnail', 'required');
 		if($this->form->run()) {
