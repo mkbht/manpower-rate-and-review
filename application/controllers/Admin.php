@@ -12,7 +12,7 @@ class Admin extends CI_Controller
 		$this->load->model('admin_model', 'admin');
 		$this->load->library('session');
 	}
-
+	/* Home page for Admin Panel. Shows Login Screen */
 	function index() {
 		$this->form->set_rules('username', 'Username', 'required|callback_password_check');
 		$this->form->set_rules('pass', 'Password', 'required');
@@ -25,6 +25,7 @@ class Admin extends CI_Controller
 		}
 	}
 
+	// password checking mechanism for user login
 	function password_check($str) {
 		$pass = $this->input->post('pass');
 		if($this->admin->adminLogin($str, $pass) != 1) {
@@ -36,6 +37,7 @@ class Admin extends CI_Controller
 
 	}
 
+	// loads list of users and manpowers
 	function home($type="") {
 		$this->_session();
 		if($type== "") {
@@ -54,6 +56,7 @@ class Admin extends CI_Controller
 		}
 	}
 
+	// adds new manpower
 	function addmanpower() {
 		$this->_session();
 		$this->form->set_rules('name', 'Manpower Name', 'required|min_length[4]');
@@ -73,6 +76,7 @@ class Admin extends CI_Controller
 		}
 	}
 
+	// removes manpower
 	function removemanpower($id) {
 		$this->_session();
 		if($id == NULL) {
@@ -89,11 +93,13 @@ class Admin extends CI_Controller
 		}
 	}
 
+	// logout
 	function logout() {
 		$this->session->sess_destroy();
 		redirect(base_url('admin'));
 	}
 
+ // verify users
 	function verify($id) {
 		$this->_session();
 		if($id == NULL) {
@@ -110,6 +116,7 @@ class Admin extends CI_Controller
 		}
 	}
 
+	// checks if admin is logged in or not
 	function _session() {
 		if($this->session->userdata('admin') == '') {
 			redirect(base_url('admin'));

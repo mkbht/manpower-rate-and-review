@@ -11,6 +11,7 @@ class Login extends CI_Controller {
 		$this->load->library('session');
 	}
 
+	// login page
 	function index() {
 		$this->form->set_rules('username', 'Username', 'required|callback_password_check');
 		$this->form->set_rules('pass', 'Password', 'required');
@@ -22,6 +23,7 @@ class Login extends CI_Controller {
 		}
 	}
 
+	// password matching function
 	function password_check($str) {
 		$pass = $this->input->post('pass');
 		if($this->login->login($str, $pass) != 1) {
@@ -33,6 +35,7 @@ class Login extends CI_Controller {
 
 	}
 
+	// signup
 	public function signup() {
 		$this->form->set_rules('username', 'Username', 'required|alpha_dash|min_length[6]|callback_username_exists');
 		$this->form->set_rules('pass', 'Password', 'required|min_length[6]');
@@ -47,6 +50,7 @@ class Login extends CI_Controller {
 			$this->load->view('signup');
 	}
 
+	// check if username already exists
 	public function username_exists($username) {
 		if($this->login->userExists($username) != 1)
 			return TRUE;
