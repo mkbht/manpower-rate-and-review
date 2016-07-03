@@ -37,14 +37,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<nav class="navbar navbar-default navbar-fixed-top">
   			<div class="container-fluid">
     			<div class="navbar-header">
-      				<a class="navbar-brand" href="#" style="padding-left:100px">WebSiteName</a>
+      				<a class="navbar-brand" href="<?=base_url('index.php/pub/'); ?>" style="padding-left:100px">Manpower review</a>
     			</div>
     			<ul class="nav navbar-nav" style="padding-left: 100px">
-      				<li class="active"><a href="#">Home</a></li>
-     				<li><a href="#">Page 1</a></li>
-      				<li><a href="#">Page 2</a></li> 
-      				<li><a href="#">Page 3</a></li> 
+      				<li class="active"><a href="#">गृहपृष्ठ</a></li>
+     				<li><a href="#">म्यानपावर कम्पनीहरु</a></li>
+      				<li><a href="#">समाचारहरु</a></li> 
+      				<li><a href="#">सम्पर्क</a></li> 
     			</ul>
+    			<ul class="nav navbar-nav navbar-right">
+                	<li>
+                		<?php if($logged) { ?>
+                		<a href="#" class="glyphicon glyphicon-log-out pull-right" title="बाहिर जानुहोस"></a>
+                		<?php } else { ?>
+                		<span class="glyphicon glyphicon-user avatar" style="">
+                		<?php }?>
+					</li>
+            	</ul>
   			</div>
 		</nav>
 
@@ -83,26 +92,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   		<div class="panel-heading">Some more Manpower companies, you may like...</div>
   		<div class="panel-body">
   			<div class="row">
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/victorynepal.jpg'); ?>"><div class="text-pop">Hello world</div></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  			</div>
-  		</div>
-  		<div class="panel-body">
-  			<div class="row">
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  			</div>
-  		</div>
-  		<div class="panel-body">
-  			<div class="row">
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
-  				<div class="col-md-3"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url('img/owl3.jpg'); ?>"></div>
+  			<?php foreach($data as $key): ?>
+  				<div class="col-md-3"><a href="<?=base_url('index.php/pub/manpower/'.$key['id']); ?>"><img class="img img-responsive img-thumbnail hoverimage" src="<?=base_url($key['thumb']); ?>"><div class="text-pop"><?=$key['name']; ?></div></a></div>
+  			<?php endforeach; ?>
   			</div>
   		</div>
 	</div>
@@ -121,6 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</body>
 		<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
 		<script src="<?=base_url('assets/js/owl.carousel.min.js'); ?>"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="<?=base_url('assets/js/jquery.rateit.min.js'); ?>"></script>
 		<script src="<?=base_url('assets/js/custom.js'); ?>"></script>
 	</html>

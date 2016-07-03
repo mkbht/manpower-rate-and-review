@@ -21,18 +21,49 @@ class Pub extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->database();
-		//$this->load->model("Main_model");
+		$this->load->model("Main_model","main");
+		$this->load->library('session');
+		$this->load->helper('html');
 	}
 
 	public function index()
 	{
 		$data['title'] = "My company name";
+		$data['data'] = $this->main->getHome();
+		if(null !== $this->session->username)
+			$data['logged'] = 1;
+		else
+			$data['logged'] = 0;
 		$this->load->view('index',$data);
 	}
+	public function insert_review($id = FALSE) {
+		$this->session->set_userdata("username","ramu");
+		$text = $this->input->post('review');
+		$rate = $this->input->post('rate');
+		if(!isset($this->session->username))
+			redirect("pub/login");
+		$user = $this->session->username;
+		$review = array("rating" => $rate, "user" => $user, "manpower" => $id, "text" => $text);
+		if($this->db->insert("rating",$review))
+			echo "प्रतिकिर्या को लागि धन्यवाद!";
+	}
+
+	
+	protected function getRate($id) {
+		return round($this->main->getRate($id),2);;
+	}
+
 	public function manpower($id = FALSE) {
-		if(!$id)
-			show_404();
-		$data['title'] = "A Company Website";
+		
+		$data['power'] = $this->main->getData($id);
+		$data['coment'] = $this->main->getComment($id);
+		$data['total_rate'] = $this->db->get_where("rating",array("manpower" => $id))->num_rows();
+		$data['rate'] = $this->getRate($id);
+		$data['title'] = $data['power'][0]['name'];
+		if(null !== $this->session->username)
+			$data['logged'] = 1;
+		else
+			$data['logged'] = 0;
 		$this->load->view("manpower",$data);
 	}
 }

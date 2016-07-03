@@ -112,4 +112,7 @@ $(document).ready(function() {
         $(this).siblings(".text-pop").hide();
     }
     );
+ 
+
+
 });
